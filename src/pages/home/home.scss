@@ -1,3 +1,99 @@
-page-home {
+.page-home {
+  /*
+  .iconos-home {
+    width: 40%;
+  }
+  */
+  $gridIconosHeight: 85%;
+  $gridBotonInferiorHeight: 100% - $gridIconosHeight;
+  /*
+  $iconosHeight: $gridIconosHeight;
+  $filaGridIconosHeight: 33%;
+  $imagenGridIconosHeight: 15%;
+  $comentarioImagenGridIconosHeight: $filaGridIconosHeight - $imagenGridIconosHeight;
+*/
 
+  .grid-iconos {
+    height: $gridIconosHeight;
+  }
+/*
+  .grid-iconos ion-col ion-card {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+
+  .grid-iconos,
+  .grid-iconos ion-col,
+  .grid-iconos ion-col ion-card,
+  .grid-iconos ion-col ion-card ion-card-content,
+  .grid-iconos ion-col ion-card ion-card-content p {
+    padding: 0;
+    margin: 0;
+  }
+
+  .grid-iconos ion-col ion-card ion-card-content p {
+    height: $comentarioImagenGridIconosHeight;
+    font-size: 10px;
+  }
+
+  .grid-iconos ion-row {
+    height: $filaGridIconosHeight;
+    background-color: blue;
+  }
+
+  .grid-iconos img {
+    height: $imagenGridIconosHeight;
+  }
+*/
+
+  /*
+  .grid-iconos ion-row ion-col, .grid-iconos button,
+  .grid-iconos button img  {
+    height: $iconosHeight;
+  }
+
+  .grid-iconos ion-card, .grid-iconos ion-card img  {
+    height: $iconosHeight;
+  }
+  */
+
+
+  .grid-botom-inferior {
+    height: $gridBotonInferiorHeight;
+  }
+
+  .texto-botom-inferior {
+    font-size: 74%;
+  }
+
+
+
+  $filaGridIconos: 33%;
+  $imagenGridIconosHeight: 85%;
+  $comentarioImagenGridIconosHeight: 100% - $imagenGridIconosHeight;
+
+  .row {
+    height: $filaGridIconos;
+  }
+
+  .col-50 {
+    width: 50%;
+    float: left;
+    padding: 0;
+    height: 100%;
+  }
+
+  .grid-iconos img {
+    height: $imagenGridIconosHeight;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+  }
+
+
+  .card-description {
+    text-align: center;
+    height: $comentarioImagenGridIconosHeight;
+  }
 }

@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+
+import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -9,22 +11,41 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { Cabecera } from '../components/cabecera/cabecera';
+import { PreferenciasPage } from '../pages/preferencias/preferencias';
+
+import { ListaSitiosPage } from '../pages/listasitios/listasitios';
+import { DetalleSitioPage } from '../pages/detallesitio/detallesitio';
+import { MapaPage } from '../pages/mapa/mapa';
+
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    Cabecera,
+    PreferenciasPage,
+    ListaSitiosPage,
+    DetalleSitioPage,
+    MapaPage
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    ListPage
+    ListPage,
+    Cabecera,
+    PreferenciasPage,
+    ListaSitiosPage,
+    DetalleSitioPage,
+    MapaPage
   ],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [
     StatusBar,
     SplashScreen,

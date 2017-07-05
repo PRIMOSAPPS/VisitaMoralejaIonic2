@@ -1,3 +1,4 @@
+<!--
 <ion-header>
   <ion-navbar>
     <button ion-button menuToggle>
@@ -6,13 +7,123 @@
     <ion-title>Home</ion-title>
   </ion-navbar>
 </ion-header>
+-->
+<ion-header>
+  <mn-cabecera></mn-cabecera>
+</ion-header>
 
-<ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+<ion-content class="page-home">
+  <!--
+  <ion-grid class="grid-iconos">
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <img src="img/inicio/ic_conoce.png" />
+          <ion-card-content>
+            <p>
+              Conoce Moraleja
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <img src="img/inicio/ic_decopas.png" />
+          <ion-card-content>
+            <p>
+              ¿Tomamos algo?
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <img src="img/inicio/ic_comer.png" />
+          <ion-card-content>
+            <p>
+              Comer y dormir
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <img src="img/inicio/ic_decompras.png" />
+          <ion-card-content>
+            <p>
+              De compras
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <img src="img/inicio/ic_servicios.png" />
+          <ion-card-content>
+            <p>
+              Servicios y reparaciones
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card>
+          <img src="img/inicio/ic_eventos.png" />
+          <ion-card-content>
+            <p>
+              Festejos
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  -->
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
+  <div class="grid-iconos">
+    <div class="row">
+      <div class="col col-50" (click)="irConoce($event)">
+        <img class="full-image" src="img/inicio/ic_conoce.png" />
+        <div class="card-description">Conoce Moraleja</div>
+      </div>
+      <div class="col col-50" (click)="irTomarAlgo($event)">
+        <img class="full-image" src="img/inicio/ic_decopas.png" />
+        <div class="card-description">¿Tomamos algo?</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-50" (click)="irComer($event)">
+        <img class="full-image" src="img/inicio/ic_comer.png" />
+        <div class="card-description">Comer y dormir</div>
+      </div>
+      <div class="col col-50" (click)="irDeCompras($event)">
+        <img class="full-image" src="img/inicio/ic_decompras.png" />
+        <div class="card-description">De compras</div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-50" (click)="irServiciosReparaciones($event)">
+        <img class="full-image" src="img/inicio/ic_servicios.png" />
+        <div class="card-description">Servicios y reparaciones</div>
+      </div>
+      <div class="col col-50" (click)="irEventos($event)">
+        <img class="full-image" src="img/inicio/ic_eventos.png" />
+        <div class="card-description">Festejos</div>
+      </div>
+    </div>
+  </div>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+
+
+
+
+  <ion-grid class="grid-botom-inferior">
+    <ion-row>
+      <ion-col><button ion-button color="secondary" block class="texto-botom-inferior">Si quieres aparecer en la aplicación, pulsa aquí.</button></ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
