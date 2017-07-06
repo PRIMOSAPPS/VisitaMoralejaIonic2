@@ -51,6 +51,9 @@ export class DetalleSitioPage {
     );
     */
 
+    // Esta no es la forma, hayque recuperarlo de base de datos, o no, segun como lo haga
+    this.asignarImagenes(this.sitio.imagenes);
+
     this.asignarTextoLargo();
     this.asignarTelefonos();
     this.asignarUrlCompartir();

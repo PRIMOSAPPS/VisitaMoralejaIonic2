@@ -12,9 +12,9 @@
 <ion-content padding>
   <ion-list>
     <ion-item *ngFor="let item of sitios" (click)="sitioSeleccionado($event, item)" text-wrap>
-      <div id="wrapper">
-        <div id="im">
-          <img src="img/iconospuntosinteres/puntos_de_interes.png">
+      <div class="wrapper-item">
+        <div class="divImg">
+          <img src="data:image/jpeg;base64,{{item.logotipo.imagen}}">
         </div>
         <div class="texto">
           {{item.nombre}}

@@ -48,7 +48,10 @@ export class ListaSitiosPage {
   }
 
   cargarSitios() {
-    this.sitios = this.ejemploDao.getSitiosByIdCategoria(this.idCategoria);
+    //this.sitios = this.ejemploDao.getSitiosByIdCategoria(this.idCategoria);
+    this.ejemploDao.getSitiosByIdCategoria(this.idCategoria).
+      then(sitios => {this.sitios = sitios}).
+      catch(err => {console.error("[ejemploDao.getSitiosByIdCategoria] Error al cargar los sitios: " + err);});
     /*
     this.sitiosSqLite.getAll().then(
       (items) => { this.puntoInteres = items; },
