@@ -15,7 +15,10 @@ import { Cabecera } from '../components/cabecera/cabecera';
 import { PreferenciasPage } from '../pages/preferencias/preferencias';
 
 import { ListaSitiosPage } from '../pages/listasitios/listasitios';
+import { ListadoSitiosPage } from '../pages/listado/listadositios';
 import { DetalleSitioPage } from '../pages/detallesitio/detallesitio';
+import { InicioEventoPage } from '../pages/inicioevento/inicioevento';
+
 import { MapaPage } from '../pages/mapa/mapa';
 
 @NgModule({
@@ -27,7 +30,9 @@ import { MapaPage } from '../pages/mapa/mapa';
     PreferenciasPage,
     ListaSitiosPage,
     DetalleSitioPage,
-    MapaPage
+    MapaPage,
+    InicioEventoPage,
+    ListadoSitiosPage
   ],
   imports: [
     BrowserModule,
@@ -43,7 +48,9 @@ import { MapaPage } from '../pages/mapa/mapa';
     PreferenciasPage,
     ListaSitiosPage,
     DetalleSitioPage,
-    MapaPage
+    MapaPage,
+    InicioEventoPage,
+    ListadoSitiosPage
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [

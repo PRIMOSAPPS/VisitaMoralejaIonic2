@@ -1,0 +1,39 @@
+page-inicioevento {
+  $altoSlide: 40%;
+  $altoBotones: 10%;
+  $altoScroll: 100% - $altoSlide - $altoBotones;
+
+  .fondo-slide {
+    width: 100%;
+    height: $altoSlide;
+    /*
+    display: flex;
+    flex-direction: row;
+    */
+  }
+
+  .contenidoSroll {
+    position: fixed;
+    top: $altoSlide;
+    bottom: $altoBotones;
+    height: $altoScroll;
+  }
+
+  .informacionEvento {
+    color: #000000;
+    background-color: #FFFFFF;
+    padding: 3%;
+  }
+
+  .gridBotonesInferiores {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: $altoBotones;
+    background-color: #123456;
+  }
+
+  .gridBotonesInferiores button {
+    width: 90%;
+  }
+}

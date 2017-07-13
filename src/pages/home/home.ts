@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { ListaSitiosPage } from '../listasitios/listasitios';
+//import { ListaSitiosPage } from '../listasitios/listasitios';
+import { ListadoSitiosPage } from '../listado/listadositios';
 import { MapaPage } from '../mapa/mapa';
+import { InicioEventoPage } from '../inicioevento/inicioevento';
 
 @Component({
   selector: 'page-home',
@@ -21,7 +23,7 @@ export class HomePage {
   }
 
   irListaSitios(event, idCategoria) {
-    this.navCtrl.push(ListaSitiosPage, {
+    this.navCtrl.push(ListadoSitiosPage, {
       idCategoria: idCategoria
     });
   }
@@ -33,7 +35,7 @@ export class HomePage {
   irServiciosReparaciones(event) { this.irListaSitios(event, HomePage.ID_CATEGORIA_SERVICIOS_REPARACIONES); }
 
   irEventos(event) {
-    this.navCtrl.push(MapaPage, {
+    this.navCtrl.push(InicioEventoPage, {
       idEvento: 9
     });
   }
