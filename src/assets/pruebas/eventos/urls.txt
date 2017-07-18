@@ -1,0 +1,20 @@
+Eventos descargables
+http://appmoraleja.roymainformatica.com/eventos/app/eventos/EventosDescargablesToApp.php?id_poblacion=1&ultima_actualizacion=0
+
+Evento
+http://appmoraleja.roymainformatica.com/eventos/app/eventos/EventosToApp.php?id_evento=9
+
+Sitios evento
+http://appmoraleja.roymainformatica.com/eventos/app/eventos/SitiosEventoToApp.php?id_sitio_evento=2
+
+Imagen evento
+http://appmoraleja.roymainformatica.com/eventos/app/eventos/ImagenesEventoToApp.php?id_imagen_evento=44
+
+Categorias evento
+http://appmoraleja.roymainformatica.com/eventos/app/eventos/CategoriasEventoToApp.php?id_categoria_evento=4
+
+Actividad evento
+http://appmoraleja.roymainformatica.com/eventos/app/eventos/ActividadesEventoToApp.php?id_actividad_evento=37
+
+Imagen actividad (Parece que todas son la misma imagen)
+http://appmoraleja.roymainformatica.com/eventos/app/eventos/ImagenesActividadEventoToApp.php?id_imagen_actividad_evento=13

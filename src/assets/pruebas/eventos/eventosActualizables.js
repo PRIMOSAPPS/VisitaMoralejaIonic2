@@ -1,0 +1,83 @@
+[{
+  "id": "9",
+  "nombre": "U2FuIEJ1ZW5hdmVudHVyYSAyMDE2",
+  "formas_evento": [{
+    "id": "2",
+    "id_evento": "9",
+    "id_categoria_evento": "0",
+    "tipo_forma": "linea",
+    "color_relleno": "",
+    "color_linea": "55DF0303",
+    "grosor_linea": "3",
+    "texto": "UmVjb3JyaWRvIGRlbCBlbmNpZXJybw==",
+    "coordenadas": "LTYuNjYxMDk2LDQwLjA2NzI1MzstNi42NjIzMjI5LDQwLjA2Mzk2NjMgLTYuNjYyNzQxMyw0MC4wNjQxMTQxIC02LjY2MjY2MDgsNDAuMDY0MjQxNCAtNi42NjIzMTc1LDQwLjA2NDU3OCAtNi42NjE5ODQ5LDQwLjA2NDk5MjcgLTYuNjYxNDgwNyw0MC4wNjY0NTQyIC02LjY2MTMxOTcsNDAuMDY2NjQ3MSAtNi42NjEyNjYxLDQwLjA2Njg2NDcgLTYuNjYxMjI4NSw0MC4wNjcwNzQxIC02LjY2MDc1NjUsNDAuMDY3NjM2NSwwLjAgLTYuNjYwMjg5OCw0MC4wNjc5MTE2IC02LjY2MDAzMjMsNDAuMDY4MTc0MyAtNi42NTk5MzU3LDQwLjA2ODYwMTMgLTYuNjYwMzU5NSw0MC4wNjg2OTU3IC02LjY2MDUzMTIsNDAuMDY4NDkwNA==",
+    "activo": "1",
+    "ultima_actualizacion": "2016-07-08 18:16:55"
+  }, {
+    "id": "4",
+    "id_evento": "9",
+    "id_categoria_evento": "1",
+    "tipo_forma": "poligono",
+    "color_relleno": "55A475F6",
+    "color_linea": "555220AA",
+    "grosor_linea": "0",
+    "texto": "UmVjb3JyaWRvIGRlIGxhIHZhY2E=",
+    "coordenadas": "LTYuNjYwOTA1LDQwLjA2ODA3NDstNi42NjEyNSw0MC4wNjY5OTIgLTYuNjYxMTMyLDQwLjA2NzEwMjggLTYuNjYwOTYwMyw0MC4wNjczNjU2IC02LjY2MDcwODIsNDAuMDY3NjExOSAtNi42NjA1Nzk0LDQwLjA2NzY5NCAtNi42NjA0OTA5LDQwLjA2Nzc0MzIgLTYuNjYwMjg5OCw0MC4wNjc5MTE2IC02LjY1OTk2MjYsNDAuMDY4MzAxNiAtNi42NTk5MDg5LDQwLjA2ODYzNDEgLTYuNjYwMzI3Myw0MC4wNjg3MzI2IC02LjY2MDU1OCw0MC4wNjg4ODg3IC02LjY2MTE2NDIsNDAuMDY4NDkwNCAtNi42NjE2MTQ3LDQwLjA2ODMyMjEgLTYuNjYxMzUzMiw0MC4wNjgwMTQyIC02LjY2MTMzMzEsNDAuMDY3NzA2MyAtNi42NjEzMzU4LDQwLjA2NzEyMzQgLTYuNjYxMjUsNDAuMDY2OTky",
+    "activo": "1",
+    "ultima_actualizacion": "2016-07-08 18:16:55"
+  }, {
+    "id": "5",
+    "id_evento": "9",
+    "id_categoria_evento": "1",
+    "tipo_forma": "poligono",
+    "color_relleno": "882E64FE",
+    "color_linea": "5558A118",
+    "grosor_linea": "1",
+    "texto": "RWwgZmVyaWFs",
+    "coordenadas": "LTYuNjYzMDE0OSw0MC4wNjk2MTUzOy02LjY2Mzc4NzQsNDAuMDY5MjQ1OCAtNi42NjMxNDM2LDQwLjA2OTE3MTkgLTYuNjYzMDE0OSw0MC4wNjk2MTUzIC02LjY2MzAzNjMsNDAuMDcwMDkxNSAtNi42NjM3NjU5LDQwLjA3MDE0ODkgLTYuNjYzNzg3NCw0MC4wNjkyNDU4",
+    "activo": "0",
+    "ultima_actualizacion": "2016-07-08 18:16:55"
+  }, {
+    "id": "7",
+    "id_evento": "9",
+    "id_categoria_evento": "0",
+    "tipo_forma": "punto",
+    "color_relleno": "55F4B6AD",
+    "color_linea": "55641205",
+    "grosor_linea": "2",
+    "texto": "U2FsaWRhIGRlbCBlbmNpZXJybw==",
+    "coordenadas": "LTYuNjYyMzIyOSw0MC4wNjM5NjYz",
+    "activo": "1",
+    "ultima_actualizacion": "2016-07-08 18:16:55"
+  }, {
+    "id": "8",
+    "id_evento": "9",
+    "id_categoria_evento": "0",
+    "tipo_forma": "punto",
+    "color_relleno": "55F4B6AD",
+    "color_linea": "55641205",
+    "grosor_linea": "2",
+    "texto": "UGxhemEgZGUgdG9yb3M=",
+    "coordenadas": "LTYuNjYwNTMxMiw0MC4wNjg0OTA0",
+    "activo": "1",
+    "ultima_actualizacion": "2016-07-08 18:16:55"
+  }, {
+    "id": "9",
+    "id_evento": "9",
+    "id_categoria_evento": "0",
+    "tipo_forma": "punto",
+    "color_relleno": "55EBD373",
+    "color_linea": "558E7309",
+    "grosor_linea": "2",
+    "texto": "Wm9uYSBkZSB2ZXJiZW5hcw==",
+    "coordenadas": "LTYuNjU3NDc2MSw0MC4wNzA4NDQ4",
+    "activo": "1",
+    "ultima_actualizacion": "2016-07-08 18:16:55"
+  }],
+  "ids_sitios": ["1", "2"],
+  "ids_imagenes": ["42", "43", "44"],
+  "ids_categorias_evento": ["1", "4", "2", "3"],
+  "ids_actividades": ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24", "25", "26", "27", "28", "29", "30", "31", "32", "33", "34", "35", "36", "37"],
+  "activo": "1",
+  "ultima_actualizacion": "2016-07-11 23:04:04"
+}]
