@@ -4,7 +4,9 @@ import { NavController } from 'ionic-angular';
 //import { ListaSitiosPage } from '../listasitios/listasitios';
 import { ListadoSitiosPage } from '../listado/listadositios';
 import { MapaPage } from '../mapa/mapa';
-import { InicioEventoPage } from '../inicioevento/inicioevento';
+//import { InicioEventoPage } from '../inicioevento/inicioevento';
+import { ListadoEventosPage } from '../listado/listadoeventos';
+
 
 @Component({
   selector: 'page-home',
@@ -35,9 +37,7 @@ export class HomePage {
   irServiciosReparaciones(event) { this.irListaSitios(event, HomePage.ID_CATEGORIA_SERVICIOS_REPARACIONES); }
 
   irEventos(event) {
-    this.navCtrl.push(InicioEventoPage, {
-      idEvento: 9
-    });
+    this.navCtrl.push(ListadoEventosPage);
   }
 
 }

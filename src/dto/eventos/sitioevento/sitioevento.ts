@@ -1,6 +1,6 @@
 import { Imagen } from '../../imagen/imagen';
 
-export class Evento {
+export class SitioEvento {
   id: number;
   idEvento: number;
   idCategoriaEvento: number;
@@ -10,7 +10,7 @@ export class Evento {
   texto: string;
   descripcion: string;
   nombreIcono: string;
-  icono: Imagen;
+  logotipo: Imagen;
   longitud: number;
   latitud: number;
   activo: boolean;

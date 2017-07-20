@@ -18,6 +18,8 @@ import { ListaSitiosPage } from '../pages/listasitios/listasitios';
 import { ListadoSitiosPage } from '../pages/listado/listadositios';
 import { DetalleSitioPage } from '../pages/detallesitio/detallesitio';
 import { InicioEventoPage } from '../pages/inicioevento/inicioevento';
+import { ListadoEventosPage } from '../pages/listado/listadoeventos';
+import { ListadoSitiosEventoPage } from '../pages/listado/listadositiosevento';
 
 import { MapaPage } from '../pages/mapa/mapa';
 
@@ -32,7 +34,9 @@ import { MapaPage } from '../pages/mapa/mapa';
     DetalleSitioPage,
     MapaPage,
     InicioEventoPage,
-    ListadoSitiosPage
+    ListadoSitiosPage,
+    ListadoEventosPage,
+    ListadoSitiosEventoPage
   ],
   imports: [
     BrowserModule,
@@ -50,7 +54,9 @@ import { MapaPage } from '../pages/mapa/mapa';
     DetalleSitioPage,
     MapaPage,
     InicioEventoPage,
-    ListadoSitiosPage
+    ListadoSitiosPage,
+    ListadoEventosPage,
+    ListadoSitiosEventoPage
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [

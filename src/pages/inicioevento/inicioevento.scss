@@ -12,6 +12,16 @@ page-inicioevento {
     */
   }
 
+  .fondo-slide .slide-zoom {
+    width: 100%;
+    height: 100%;
+  }
+
+  .fondo-slide img {
+    width: 100%;
+    height: 100%;
+  }
+
   .contenidoSroll {
     position: fixed;
     top: $altoSlide;

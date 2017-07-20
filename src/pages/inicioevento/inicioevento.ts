@@ -3,9 +3,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { SafeHtml } from '@angular/platform-browser';
 
-import { Imagen } from '../../dto/imagen/imagen';
+import { ImagenEvento } from '../../dto/eventos/imagenes/imagenevento';
+
+import { Evento } from '../../dto/eventos/evento/evento';
 
 import { EjemploDao } from '../../providers/dao/ejemplodao/ejemplodao';
+import { EjemploEventosDao } from '../../providers/dao/ejemplodao/ejemploeventosdao';
+
+import { ListadoSitiosEventoPage } from '../listado/listadositiosevento';
 
 /**
  * Generated class for the InicioeventoPage page.
@@ -17,7 +22,7 @@ import { EjemploDao } from '../../providers/dao/ejemplodao/ejemplodao';
 @Component({
   selector: 'page-inicioevento',
   templateUrl: 'inicioevento.html',
-  providers: [EjemploDao],
+  providers: [EjemploEventosDao],
 })
 export class InicioEventoPage {
   opcionesSlider = {
@@ -29,29 +34,22 @@ export class InicioEventoPage {
     //pager: true
   };
 
+  evento: Evento;
   imagenes: Array<string>;
   texto: SafeHtml;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private ejemploDao: EjemploDao) {
-    this.imagenes = new Array();
+  constructor(public navCtrl: NavController, public navParams: NavParams, private ejemploDao: EjemploEventosDao) {
+    this.evento = navParams.get('evento');
   }
 
-  cargarImagenes() {
-    this.ejemploDao.getSitioById(35).
-      then(sitio => {
-        this.texto = sitio.textoLargo1 + sitio.textoLargo2;
-        this.borrarAsignarImagenes(sitio.imagenes);
-      }).
-      catch(err => {console.error("[ejemploDao.getSitiosById] Error al cargar los sitios: " + err);});
-  }
-
-  borrarAsignarImagenes(imagenes) {
+  asignarImagenes() {
+    var imagenes = this.evento.imagenes;
     for(var i=0; i<imagenes.length; i++) {
-      this.borrarAsignarImagen(imagenes[i]);
+      this.asignarImagen(imagenes[i]);
     }
   }
 
-  borrarAsignarImagen(imagen: Imagen) {
+  asignarImagen(imagen: ImagenEvento) {
     console.log("Imagen a asignar: " + imagen);
     if (imagen != null) {
       this.imagenes.push(imagen.imagen);
@@ -59,8 +57,20 @@ export class InicioEventoPage {
   }
 
   ionViewDidLoad() {
+    this.imagenes = new Array();
     console.log('ionViewDidLoad InicioeventoPage');
-    this.cargarImagenes();
+    this.texto = this.evento.texto;
+    if(this.evento.imagenes != null) {
+      this.asignarImagenes();
+    }
+  }
+
+  irListaSitios(event) {
+    console.log("Hay que ir a ver los sitios del evento" );
+
+    this.navCtrl.push(ListadoSitiosEventoPage, {
+      idEvento: this.evento.id
+    });
   }
 
 }
