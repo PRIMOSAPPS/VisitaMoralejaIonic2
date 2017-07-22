@@ -1,0 +1,95 @@
+<!--
+  Generated template for the ListadogrupoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <mn-cabecera></mn-cabecera>
+</ion-header>
+
+
+<ion-content>
+  <!--
+  <ion-list>
+    <ion-item *ngFor="let d of diseases; let i=index" text-wrap (click)="toggleGroup($event, i)" [ngClass]="{active: isGroupShown(i)}">
+      <h3>
+        {{d.title}}
+        <ion-icon color="success" item-right [name]="isGroupShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+      </h3>
+      <div *ngIf="isGroupShown(i)">{{d.description}}</div>
+    </ion-item>
+  </ion-list>
+  -->
+  <!--
+  <ion-list>
+    <div *ngFor="let group of grupos; let i=index">
+      <div>
+        <ion-item text-wrap (click)="toggleGroupBorrar($event, i)" [ngClass]="{active: isGroupShownBorrar(i)}">
+          <h3>
+            &nbsp; Group {{group.name}}
+            <ion-icon color="success" item-right [name]="isGroupShownBorrar(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+          </h3>
+        </ion-item>
+        <div *ngIf="isGroupShownBorrar(i)">
+          <ion-item class="item-accordion"  *ngFor="let item of group.items" (click)="itemClicked($event, item)" text-wrap>
+            {{item}}
+          </ion-item>
+        </div>
+      </div>
+    </div>
+  </ion-list>
+
+  <BR/><BR/>
+  -->
+  <ion-list>
+    <div *ngFor="let group of gruposAct; let i=index">
+      <div>
+        <ion-item class="cabeceraGrupo" text-wrap (click)="toggleGroup($event, i)" [ngClass]="{active: isGroupShown(i)}">
+          <!--
+          <h3>
+            {{group.etiqueta}}
+            <ion-icon color="success" item-right [name]="isGroupShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+          </h3>
+          -->
+          <div class="wrapper-item">
+            <div class="divImg">
+              <img src="data:image/jpeg;base64,{{evento.logotipo.imagen}}">
+            </div>
+            <div class="texto">
+              {{group.etiqueta}}
+              <ion-icon color="success" item-right [name]="isGroupShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+            </div>
+          </div>
+        </ion-item>
+        <div *ngIf="isGroupShown(i)">
+          <ion-item class="item-accordion"  *ngFor="let item of group.items" (click)="itemClicked($event, item)" text-wrap>
+            <div class="wrapper-item">
+              <div class="divImg">
+                <img src="data:image/jpeg;base64,{{item.logotipo.imagen}}">
+              </div>
+              <div class="texto" [innerHtml]="item.texto">
+              </div>
+            </div>
+          </ion-item>
+        </div>
+      </div>
+    </div>
+  </ion-list>
+
+  <!--
+  <ion-list>
+    <ion-item *ngFor="let group of grupos; let i=index" text-wrap (click)="toggleGroup($event, i)" [ngClass]="{active: isGroupShown(i)}">
+      <h3>
+        &nbsp; Group {{group.name}}
+        <ion-icon color="success" item-right [name]="isGroupShown(i) ? 'arrow-dropdown' : 'arrow-dropright'"></ion-icon>
+      </h3>
+      <div *ngIf="isGroupShown(i)">
+        <ion-item class="item-accordion"  *ngFor="let item of group.items" (click)="itemClicked($event, i)" text-wrap>
+          {{item}}
+        </ion-item>
+      </div>
+    </ion-item>
+  </ion-list>
+  -->
+</ion-content>

@@ -1,0 +1,34 @@
+<!--
+  Generated template for the DetalleactividadPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <mn-cabecera></mn-cabecera>
+</ion-header>
+
+
+<ion-content>
+  <ion-item text-wrap>
+    <div class="wrapper-item">
+      <div class="divImg">
+        <img src="data:image/jpeg;base64,{{actividad.logotipo.imagen}}">
+      </div>
+      <div class="texto">
+        {{actividad.nombre}}
+      </div>
+    </div>
+  </ion-item>
+
+  <ion-slides [options]="opcionesSlider" class="fondo-slide">
+    <ion-slide *ngFor="let imagen of imagenes">
+      <img src="data:image/jpeg;base64,{{imagen}}" />
+    </ion-slide>
+  </ion-slides>
+
+  <ion-content direction="y">
+    <div class="informacion-sitio" [innerHTML]="texto"></div>
+  </ion-content>
+
+</ion-content>

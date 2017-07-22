@@ -1,12 +1,10 @@
-page-listado {
-  /*
-  ion-item {
-    min-height: 20%;
-  }
-  */
+page-detallesitioevento {
+  $altoItem: 10%;
+  $altoTexto: 100% - $altoItem;
 
   .wrapper-item {
     width: 100%;
+    height: $altoItem;
   }
 
   .texto {
@@ -30,6 +28,15 @@ page-listado {
   }
 
   .informacion-sitio {
+    color: #000000;
+    background-color: #FFFFFF;
+    padding: 3%;
+  }
 
+  .contenidoSroll {
+    position: fixed;
+    top: 0%;
+    bottom: 30%;
+    height: 50%;
   }
 }

@@ -1,0 +1,51 @@
+page-detalleactividad {
+  $altoItem: 10%;
+  $altoTexto: 100% - $altoItem;
+
+  .wrapper-item {
+    width: 100%;
+    height: $altoItem;
+  }
+
+  .texto {
+    margin-left: 20%;
+  }
+
+  .divImg {
+    position: absolute;
+    width: 20%;
+    padding-top: 15%;
+    padding-bottom: 15%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .divImg img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .informacion-sitio {
+    color: #000000;
+    background-color: #FFFFFF;
+    padding: 3%;
+  }
+
+  .contenidoSroll {
+    position: fixed;
+    top: 0%;
+    bottom: 30%;
+    height: 50%;
+  }
+
+  .fondo-slide {
+    width: 100%;
+    height: auto;
+    /*
+    display: flex;
+    flex-direction: row;
+    */
+  }
+}

@@ -10,7 +10,9 @@ import 'rxjs/Rx'
 import { Evento } from '../../../dto/eventos/evento/evento';
 import { Imagen } from '../../../dto/imagen/imagen';
 import { ImagenEvento } from '../../../dto/eventos/imagenes/imagenevento';
+import { ImagenActividadEvento } from '../../../dto/eventos/imagenes/imagenactividadevento';
 import { SitioEvento } from '../../../dto/eventos/sitioevento/sitioevento';
+import { ActividadEvento } from '../../../dto/eventos/actividadevento/actividadevento';
 
 
 type CallBackLeerJson = (resul: any) => any;
@@ -22,6 +24,20 @@ export class EjemploEventosDao {
 
   constructor(private http: Http) {
   }
+
+  getEventosActualizables(): Promise<any> {
+    var fich = "assets/pruebas/eventos/eventosActualizables.js";
+    return this.leerFicheroStr(fich);
+    /*
+    this.leerFicheroStr().then(valor => {
+      }
+    ).catch();
+    */
+  }
+
+  //////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
 
   getEventos(): Promise<any> {
     var resul = new Promise((resolve, reject) => {
@@ -40,6 +56,11 @@ export class EjemploEventosDao {
     return resul;
   }
 
+
+  getEventoById(idEvento: number): Promise<any> {
+    return this.cargarEvento(idEvento);
+  }
+
   /**
   Carga el evento con identificador i
   */
@@ -48,8 +69,8 @@ export class EjemploEventosDao {
     var resul = new Promise((resolve, reject) => {
       this.http.get(fich).map(res => res.json()).subscribe(
         data => {
-          var evento9 = data[0];
-          var objEvento = this.leerEvento(evento9);
+          var evento = data[0];
+          var objEvento = this.leerEvento(evento);
           console.log("Leido el fichero: " + fich + " el resultado es: " + objEvento.nombre);
           var idsImagenes = [42, 43, 44];
           this.leerImagenesEvento(objEvento.id, idsImagenes).then(imagenes => {
@@ -276,6 +297,131 @@ export class EjemploEventosDao {
   //////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////
 
+  getActividadesEventoByIdEvento(idEvento: number): Promise<any> {
+    var promesas = new Array<Promise<any>>();
+    for(var i=1; i<38; i++) {
+      //rutasFichero.push("assets/pruebas/eventos/actividades/actividadevento_" + idEvento + "_" + i + ".js");
+      var promesa = this.leerFicheroStr("assets/pruebas/eventos/actividades/actividadevento_" + idEvento + "_" + i + ".js");
+      promesas.push(promesa);
+      //rutasFichero.push("assets/pruebas/eventos/actividades/actividadevento_" + idEvento + "_" + i + ".js");
+    }
+
+    var resul = new Promise((resolve, reject) => {
+      Promise.all(promesas).then(values => {
+        console.log("getActividadesEventoByIdEvento PASO 1");
+        var promesasActividades = this.leerActividadesEventoArr(values);
+        Promise.all(promesasActividades).then(actividades => {
+          console.log("getActividadesEventoByIdEvento PASO 2: " + actividades.length);
+          resolve(actividades);
+        });
+      });
+
+      /*
+      this.leerFicheros(rutasFichero, this.leerSitiosEventoArr).then(
+        actividades => resolve(actividades)
+      ).catch(err => reject(err));
+      */
+    });
+    return resul;
+  }
+
+  private leerActividadesEventoArr = (actividades: Array<any>) : Array<Promise<ActividadEvento>> => {
+  //private leerSitiosEventoArr(sitios: Array<any>): Array<SitioEvento> {
+    console.log("[leerActividadesEventoArr] Paso 1");
+    var resul = new Array<Promise<ActividadEvento>>();
+    for (var i = 0; i < actividades.length; i++) {
+      var actividad = actividades[i][0];
+      console.log("[leerActividadesEventoArr] Paso 2: " + this);
+      console.log("[leerActividadesEventoArr] actividad.id_evento: " + actividad.id_evento);
+      console.log("[leerActividadesEventoArr] actividad.nombre_icono: " + actividad.nombre_icono);
+      console.log("[leerActividadesEventoArr] actividad.icono: " + actividad.icono);
+
+      var actividadEvento = this.leerActividadEvento(actividad);
+      resul.push(actividadEvento);
+    }
+    console.log("[leerActividadesEventoArr] Paso 3");
+
+    return resul;
+  }
+
+  private leerActividadEvento(actividad): Promise<ActividadEvento> {
+    var resul = new Promise((resolve, reject) => {
+      var obj = new ActividadEvento();
+
+      obj.id = actividad.id;
+      obj.idEvento = actividad.id_evento;
+      obj.idCategoriaEvento = actividad.id_categoria_evento;
+      obj.nombre = Base64.decode(actividad.nombre);
+      obj.texto = Base64.decode(actividad.texto);
+      obj.descripcion = Base64.decode(actividad.descripcion);
+      obj.nombreIcono = Base64.decode(actividad.nombre_icono);
+      obj.logotipo = this.crearImagenActividad(obj.id, obj.nombreIcono, true, actividad.icono);
+      //obj.inicio = new Date(UtilFecha.toISO(actividad.inicio));
+      //console.log("Recibida la fecha: " + UtilFecha.toISO(actividad.fin) + " ---- " + obj.inicio);
+      obj.inicio = UtilFecha.toDate(actividad.inicio);
+      //console.log("----------Recibida la fecha: " + UtilFecha.toISO(actividad.fin) + " ---- " + obj.inicio + " --- " + obj.inicio.getTimezoneOffset());
+      //obj.fin = new Date(UtilFecha.toISO(actividad.fin));
+      obj.fin = UtilFecha.toDate(actividad.fin);
+      obj.longitud = actividad.longitud;
+      obj.latitud = actividad.latitud;
+      obj.activo = UtilTipos.toBoolean(actividad.activo);
+      if (actividad.ultima_actualizacion != null) {
+        obj.ultimaActualizacion = new Date(UtilFecha.toISO(actividad.ultima_actualizacion));
+      } else {
+        obj.ultimaActualizacion = new Date(0);
+      }
+      obj.imagenes = new Array();
+
+      if(actividad.ids_imagenes != null && actividad.ids_imagenes.length > 0) {
+        this.getImagenActividadesEventoByIdEventoActividad(obj.idEvento, obj.id, actividad.ids_imagenes[0])
+          .then(imagen => {
+            obj.imagenes.push(imagen);
+            resolve(obj);
+          })
+          .catch(err => reject(err));
+      } else {
+        resolve(obj);
+      }
+    });
+
+    return resul;
+  }
+
+  private crearImagenActividad(idActividad: number, nombre: string, isLogo: boolean, imagen: string): ImagenActividadEvento {
+    var resul = new ImagenActividadEvento();
+    resul.idActividad = idActividad;
+    resul.nombre = nombre;
+    resul.isLogo = isLogo;
+    resul.imagen = imagen;
+
+    return resul;
+  }
+
+  //////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+
+  getImagenActividadesEventoByIdEventoActividad(idEvento: number,
+      idActividad: number, idImagen: number): Promise<ImagenActividadEvento> {
+
+    var resul = new Promise((resolve, reject) => {
+      var promesa = this.leerFicheroStr("assets/pruebas/eventos/imagenesactividad/imagenactividad_evento_"
+        + idEvento + "_actividad_" + idActividad + "_" + idImagen + ".js");
+      promesa.then(valor => {
+        var val = valor[0];
+        var nombreImg = Base64.decode(val.nombre);;
+        var imagen = this.crearImagenActividad(val.id_actividad,
+          nombreImg, false, val.imagen);
+        resolve(imagen);
+      })
+      .catch(err => reject(err));
+    });
+    return resul;
+  }
+
+  //////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
 }
 
 /*

@@ -20,6 +20,9 @@ import { DetalleSitioPage } from '../pages/detallesitio/detallesitio';
 import { InicioEventoPage } from '../pages/inicioevento/inicioevento';
 import { ListadoEventosPage } from '../pages/listado/listadoeventos';
 import { ListadoSitiosEventoPage } from '../pages/listado/listadositiosevento';
+import { DetalleSitioEventoPage } from '../pages/detallesitioevento/detallesitioevento';
+import { ListadoGrupoPage } from '../pages/listadogrupo/listadogrupo';
+import { DetalleActividadPage } from '../pages/detalleactividad/detalleactividad';
 
 import { MapaPage } from '../pages/mapa/mapa';
 
@@ -36,7 +39,10 @@ import { MapaPage } from '../pages/mapa/mapa';
     InicioEventoPage,
     ListadoSitiosPage,
     ListadoEventosPage,
-    ListadoSitiosEventoPage
+    ListadoSitiosEventoPage,
+    DetalleSitioEventoPage,
+    ListadoGrupoPage,
+    DetalleActividadPage
   ],
   imports: [
     BrowserModule,
@@ -56,7 +62,10 @@ import { MapaPage } from '../pages/mapa/mapa';
     InicioEventoPage,
     ListadoSitiosPage,
     ListadoEventosPage,
-    ListadoSitiosEventoPage
+    ListadoSitiosEventoPage,
+    DetalleSitioEventoPage,
+    ListadoGrupoPage,
+    DetalleActividadPage
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [

@@ -11,6 +11,7 @@ import { EjemploDao } from '../../providers/dao/ejemplodao/ejemplodao';
 import { EjemploEventosDao } from '../../providers/dao/ejemplodao/ejemploeventosdao';
 
 import { ListadoSitiosEventoPage } from '../listado/listadositiosevento';
+import { ListadoGrupoPage } from '../listadogrupo/listadogrupo';
 
 /**
  * Generated class for the InicioeventoPage page.
@@ -69,6 +70,15 @@ export class InicioEventoPage {
     console.log("Hay que ir a ver los sitios del evento" );
 
     this.navCtrl.push(ListadoSitiosEventoPage, {
+      idEvento: this.evento.id
+    });
+  }
+
+
+  irListaActividades(event) {
+    console.log("Hay que ir a ver las actividades del evento" );
+
+    this.navCtrl.push(ListadoGrupoPage, {
       idEvento: this.evento.id
     });
   }

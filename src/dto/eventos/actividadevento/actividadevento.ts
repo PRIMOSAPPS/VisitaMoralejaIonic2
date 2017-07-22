@@ -1,5 +1,5 @@
 
-import { Imagen } from '../../imagen/imagen';
+import { ImagenActividadEvento } from '../imagenes/imagenactividadevento';
 
 export class ActividadEvento {
   id: number;
@@ -9,8 +9,8 @@ export class ActividadEvento {
   texto: string;
   descripcion: string;
   nombreIcono: string;
-  icono: number;
-  imagenes: Array<Imagen>;
+  logotipo: ImagenActividadEvento;
+  imagenes: Array<ImagenActividadEvento>;
   inicio: Date;
   fin: Date;
   longitud: number;

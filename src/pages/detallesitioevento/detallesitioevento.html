@@ -1,0 +1,28 @@
+<!--
+  Generated template for the DetallesitioeventoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <mn-cabecera></mn-cabecera>
+</ion-header>
+
+
+<ion-content>
+  <ion-item text-wrap>
+    <div class="wrapper-item">
+      <div class="divImg">
+        <img src="data:image/jpeg;base64,{{sitio.logotipo.imagen}}">
+      </div>
+      <div class="texto">
+        {{sitio.nombre}}
+      </div>
+    </div>
+  </ion-item>
+
+  <ion-content direction="y">
+    <div class="informacion-sitio" [innerHTML]="texto"></div>
+  </ion-content>
+
+</ion-content>
