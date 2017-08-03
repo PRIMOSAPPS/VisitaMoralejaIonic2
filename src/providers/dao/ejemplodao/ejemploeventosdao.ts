@@ -7,18 +7,26 @@ import { UtilTipos } from '../../util-tipos';
 
 import 'rxjs/Rx'
 
+import { Coordenada } from '../../../dto/coordenada/coordenada';
 import { Evento } from '../../../dto/eventos/evento/evento';
 import { Imagen } from '../../../dto/imagen/imagen';
 import { ImagenEvento } from '../../../dto/eventos/imagenes/imagenevento';
 import { ImagenActividadEvento } from '../../../dto/eventos/imagenes/imagenactividadevento';
 import { SitioEvento } from '../../../dto/eventos/sitioevento/sitioevento';
 import { ActividadEvento } from '../../../dto/eventos/actividadevento/actividadevento';
+import { FormaEvento } from '../../../dto/eventos/formaevento/formaevento';
+import { CategoriaEvento } from '../../../dto/eventos/categoriaevento/categoriaevento';
+import { ImagenCategoriaEvento } from '../../../dto/eventos/imagenes/imagencategoriaevento';
 
 
 type CallBackLeerJson = (resul: any) => any;
 
 @Injectable()
 export class EjemploEventosDao {
+
+  private static get SEPARADOR_PUNTO_MARKER() {return ";";}
+  private static get SEPARADOR_VALORES_COORDENADA() {return ",";}
+  private static get SEPARADOR_COORDENADAS() {return " ";}
 
   eventos: Array<Evento>;
 
@@ -186,9 +194,9 @@ export class EjemploEventosDao {
       resul.logotipo = this.crearImagen(resul.id, evento.nombre_icono, true, evento.icono);
       //sitio.imagenes.push("data:image/jpeg;base64," + sitio.imagen1);
     }
-    resul.latitud = evento.latitud;
-    resul.longitud = evento.longitud;
-    resul.zoomInicial = evento.zoom_inicial;
+    resul.latitud = parseFloat(evento.latitud);
+    resul.longitud = parseFloat(evento.longitud);
+    resul.zoomInicial = parseInt(evento.zoom_inicial);
     if (evento.inicio != null) {
       resul.inicio = new Date(UtilFecha.toISO(evento.inicio));
     } else {
@@ -409,7 +417,7 @@ export class EjemploEventosDao {
         + idEvento + "_actividad_" + idActividad + "_" + idImagen + ".js");
       promesa.then(valor => {
         var val = valor[0];
-        var nombreImg = Base64.decode(val.nombre);;
+        var nombreImg = Base64.decode(val.nombre);
         var imagen = this.crearImagenActividad(val.id_actividad,
           nombreImg, false, val.imagen);
         resolve(imagen);
@@ -422,6 +430,163 @@ export class EjemploEventosDao {
   //////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////
+
+  getFormasByIdEvento(idEvento: number): Promise<Array<FormaEvento>> {
+    var resul = new Promise((resolve, reject) => {
+      this.getEventosActualizables()
+        .then(eventoActualizable => {
+          var formas = this.leerFormasEvento(eventoActualizable[0])
+          resolve(formas);
+        })
+        .catch(err => reject(err));
+    });
+    return resul;
+  }
+
+  private leerFormasEvento(eventoActualizable): Array<FormaEvento> {
+    var resul = new Array<FormaEvento>();
+    var formas = eventoActualizable.formas_evento;
+    for(var i=0; i<formas.length; i++) {
+      var forma = formas[i];
+      var formaEvento = this.leerFormaEvento(forma);
+      resul.push(formaEvento);
+    }
+    return resul;
+  }
+
+  private leerFormaEvento(forma): FormaEvento {
+    var resul = new FormaEvento();
+
+    resul.id = forma.id;
+    resul.idEvento = forma.id_evento;
+    resul.idCategoriaEvento = forma.id_categoria_evento;
+    resul.tipoForma = forma.tipo_forma;
+    resul.colorRelleno = forma.color_relleno;
+    resul.colorLinea = forma.color_linea;
+    resul.grosorLinea = forma.grosor_linea;
+    resul.texto = Base64.decode(forma.texto);
+    console.log("Se lee la forma: " + forma.id);
+    //var strCoordenadas = Base64.decode(forma.coordenadas);
+    var coordenadas = this.leerCoordenadasForma(forma);
+    resul.coordenadaInfoWindow = coordenadas[0];
+    if(forma.tipo_forma == "punto") {
+      resul.coordenadas = coordenadas;
+    } else {
+      resul.coordenadas = coordenadas.slice(1);
+    }
+    //resul.coordenadas = this.leerCoordenadasForma(forma);
+    resul.activo = UtilTipos.toBoolean(forma.activo);
+    resul.ultimaActualizacion = UtilFecha.toDate(forma.ultima_actualizacion);
+
+    return resul;
+  }
+
+  //private static get SEPARADOR_PUNTO_MARKER() {return ";";}
+  //private static get SEPARADOR_VALORES_COORDENADA() {return ",";}
+  //private static get SEPARADOR_COORDENADAS() {return " ";}
+  private leerCoordenadasForma(forma: any): Array<any> {
+    var resul = new Array<any>();
+    var coordenadas = Base64.decode(forma.coordenadas);
+
+    console.log("Las coordenadas en string son: " + coordenadas);
+    var coordenadas1 = coordenadas.split(EjemploEventosDao.SEPARADOR_PUNTO_MARKER);
+    var cordenadasMarker = coordenadas1[0];
+    var objCoordMarker = this.crearObjCoordenada(cordenadasMarker);
+    resul.push(objCoordMarker);
+    if(forma.tipo_forma != "punto") {
+      console.log("Las coordenadas del marker son: " + coordenadas1[0]);
+      console.log("Las coordenadas de la forma son: " + coordenadas1[1]);
+      coordenadas1 = coordenadas1[1].split(EjemploEventosDao.SEPARADOR_COORDENADAS);
+      var maxInd = (forma.tipo_forma == "linea") ? coordenadas1.length : coordenadas1.length -1;
+      for(var i=0; i<maxInd; i++) {
+        var coordenadaStr = coordenadas1[i];
+        var objCoord = this.crearObjCoordenada(coordenadaStr);
+        resul.push(objCoord);
+      }
+    }
+
+    return resul;
+  }
+
+  private crearObjCoordenada(coordenadaStr: string) {
+    var valoresCoord = coordenadaStr.split(EjemploEventosDao.SEPARADOR_VALORES_COORDENADA);
+    /*
+    var objCoord = <any>{};
+    objCoord.lat = Number.parseFloat(valoresCoord[1]);
+    objCoord.lng = Number.parseFloat(valoresCoord[0]);
+    console.log("Creada la siguiente coordenada: " + JSON.stringify(objCoord));
+    */
+    var objCoord = new Coordenada(Number.parseFloat(valoresCoord[1]),
+        Number.parseFloat(valoresCoord[0]));
+    return objCoord;
+  }
+
+
+  //////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////////////
+
+  getCategoriasEventoByIdEvento(idEvento: number): Promise<any> {
+    var promesas = new Array<Promise<any>>();
+    for(var i=1; i<5; i++) {
+      var promesa = this.leerFicheroStr("assets/pruebas/eventos/categoriaevento_" + idEvento + "_" + i + ".js");
+      promesas.push(promesa);
+    }
+
+    var resul = new Promise((resolve, reject) => {
+      Promise.all(promesas).then(values => {
+        var categorias = this.leerCategoriasEventoArr(values);
+        resolve(categorias);
+      });
+
+      /*
+      this.leerFicheros(rutasFichero, this.leerSitiosEventoArr).then(
+        actividades => resolve(actividades)
+      ).catch(err => reject(err));
+      */
+    });
+    return resul;
+  }
+
+  private leerCategoriasEventoArr = (categorias: Array<any>) : Array<CategoriaEvento> => {
+    console.log("[leerCategoriasEventoArr] INICIO");
+    var resul = new Array<CategoriaEvento>();
+    for (var i = 0; i < categorias.length; i++) {
+      var categoria = categorias[i][0];
+      var categoriaEvento = this.leerCategoriaEvento(categoria);
+      resul.push(categoriaEvento);
+    }
+    console.log("[leerCategoriasEventoArr] FIN");
+
+    return resul;
+  }
+
+  private leerCategoriaEvento(categoria): CategoriaEvento {
+    var resul = new CategoriaEvento();
+
+    resul.id = categoria.id;
+    resul.idEvento = categoria.id_evento;
+    resul.nombre = Base64.decode(categoria.nombre);
+    resul.texto = Base64.decode(categoria.texto);
+    resul.nombreIcono = Base64.decode(categoria.nombre_icono);
+    resul.icono = this.crearImagenCategoria(resul.id, resul.nombreIcono, true, categoria.icono);
+
+    resul.activo = UtilTipos.toBoolean(categoria.activo);
+    resul.ultimaActualizacion = UtilFecha.toDate(categoria.ultima_actualizacion);
+
+    return resul;
+  }
+
+  private crearImagenCategoria(idCategoria: number, nombre: string, isLogo: boolean, imagen: string): ImagenCategoriaEvento {
+    var resul = new ImagenCategoriaEvento();
+    resul.idCategoria = idCategoria;
+    resul.nombre = nombre;
+    resul.isLogo = isLogo;
+    resul.imagen = imagen;
+
+    return resul;
+  }
+
 }
 
 /*

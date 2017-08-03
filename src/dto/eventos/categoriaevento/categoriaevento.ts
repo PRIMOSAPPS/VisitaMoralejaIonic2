@@ -1,5 +1,5 @@
 
-import { Imagen } from '../../imagen/imagen';
+import { ImagenCategoriaEvento } from '../imagenes/imagencategoriaevento';
 
 export class CategoriaEvento {
   id: number;
@@ -7,7 +7,7 @@ export class CategoriaEvento {
   nombre: string;
   texto: string;
   nombreIcono: string;
-  icono: Imagen;
+  icono: ImagenCategoriaEvento;
   activo: boolean;
   ultimaActualizacion: Date;
 

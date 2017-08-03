@@ -12,6 +12,7 @@ import { EjemploEventosDao } from '../../providers/dao/ejemplodao/ejemploeventos
 
 import { ListadoSitiosEventoPage } from '../listado/listadositiosevento';
 import { ListadoGrupoPage } from '../listadogrupo/listadogrupo';
+import { MapaPage } from '../mapa/mapa';
 
 /**
  * Generated class for the InicioeventoPage page.
@@ -64,6 +65,12 @@ export class InicioEventoPage {
     if(this.evento.imagenes != null) {
       this.asignarImagenes();
     }
+  }
+
+  irMapa(event) {
+    this.navCtrl.push(MapaPage, {
+      idEvento: this.evento.id
+    });
   }
 
   irListaSitios(event) {

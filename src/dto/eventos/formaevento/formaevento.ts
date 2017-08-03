@@ -1,4 +1,4 @@
-export class Evento {
+export class FormaEvento {
   id: number;
   idEvento: number;
   idCategoriaEvento: number;
@@ -7,7 +7,8 @@ export class Evento {
   colorLinea: string;
   grosorLinea: string;
   texto: string;
-  coordenadas: string;
+  coordenadas: Array<any>;
+  coordenadaInfoWindow: any;
   activo: boolean;
   ultimaActualizacion: Date;
 }
