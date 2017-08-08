@@ -16,7 +16,7 @@
 <ion-content>
 
   <div id="floating-panel">
-    <img class="full-image" src="img/general/ic_logo.png" />
+    <img class="full-image" src="img/general/ic_logo.png" (click)="mostrarOcultarMenu()"/>
     <!--
     <b>Start: </b>
     <select [(ngModel)]="start" id="start" (change)="calculateAndDisplayRoute()">
@@ -50,6 +50,24 @@
     </select>
     -->
   </div>
+  <div class="menu_categorias" [ngClass]="{menu_categorias_visible: menuVisible, menu_categorias_invisible: !menuVisible}">
+    <ion-list>
+      <ion-item *ngFor="let item of categorias" text-wrap>
+        <div class="wrapper-item">
+          <div class="divImg">
+            <img src="data:image/jpeg;base64,{{item.categoria.icono.imagen}}">
+          </div>
+          <div class="texto">
+            {{item.categoria.nombre}}
+          </div>
+          <div class="checkCategoria">
+            <input [(ngModel)]="item.seleccionada" (click)="clickCheckboxCategoria($event, item)" type="checkbox">
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+
   <div #map id="map"></div>
 
 </ion-content>

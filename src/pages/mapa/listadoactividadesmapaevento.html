@@ -1,0 +1,44 @@
+<!--
+  Generated template for the ListasitiosPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<div class="dialogo-listado">
+  <ion-header>
+    <ion-navbar>
+      <div class="divImg">
+        <img class="full-image" src="img/general/ic_logo.png" />
+      </div>
+      <div class="textoCabecera">
+        Seleccione para mas detalle
+      </div>
+    </ion-navbar>
+  </ion-header>
+
+  <ion-content>
+    <div ion-fixed>
+      <!--
+      <div class="divImg">
+        <img class="full-image" src="img/general/ic_logo.png" />
+      </div>
+      <div class="textoCabecera">
+        Seleccione para mas detalle
+      </div>
+    -->
+    </div>
+    <ion-list>
+      <ion-item *ngFor="let item of items" (click)="itemSeleccionado($event, item)" text-wrap>
+        <div class="wrapper-item">
+          <div class="divImg">
+            <img src="data:image/jpeg;base64,{{item.logotipo.imagen}}">
+          </div>
+          <div class="texto">
+            {{item.nombre}}
+          </div>
+        </div>
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+</div>

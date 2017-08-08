@@ -6,6 +6,7 @@ import { ListadoSitiosPage } from '../listado/listadositios';
 import { MapaPage } from '../mapa/mapa';
 //import { InicioEventoPage } from '../inicioevento/inicioevento';
 import { ListadoEventosPage } from '../listado/listadoeventos';
+import { Constantes } from '../../otros/constantes/constantes';
 
 
 @Component({
@@ -14,11 +15,7 @@ import { ListadoEventosPage } from '../listado/listadoeventos';
 })
 export class HomePage {
 
-  static readonly ID_CATEGORIA_CONOCE = 1;
-  static readonly ID_CATEGORIA_TOMAR_ALGO = 2;
-  static readonly ID_CATEGORIA_COMER = 3;
-  static readonly ID_CATEGORIA_DE_COMPRAS = 4;
-  static readonly ID_CATEGORIA_SERVICIOS_REPARACIONES = 5;
+
 
   constructor(public navCtrl: NavController) {
 
@@ -30,11 +27,11 @@ export class HomePage {
     });
   }
 
-  irConoce(event) { this.irListaSitios(event, HomePage.ID_CATEGORIA_CONOCE); }
-  irTomarAlgo(event) { this.irListaSitios(event, HomePage.ID_CATEGORIA_TOMAR_ALGO); }
-  irComer(event) { this.irListaSitios(event, HomePage.ID_CATEGORIA_COMER); }
-  irDeCompras(event) { this.irListaSitios(event, HomePage.ID_CATEGORIA_DE_COMPRAS); }
-  irServiciosReparaciones(event) { this.irListaSitios(event, HomePage.ID_CATEGORIA_SERVICIOS_REPARACIONES); }
+  irConoce(event) { this.irListaSitios(event, Constantes.ID_CATEGORIA_CONOCE); }
+  irTomarAlgo(event) { this.irListaSitios(event, Constantes.ID_CATEGORIA_TOMAR_ALGO); }
+  irComer(event) { this.irListaSitios(event, Constantes.ID_CATEGORIA_COMER); }
+  irDeCompras(event) { this.irListaSitios(event, Constantes.ID_CATEGORIA_DE_COMPRAS); }
+  irServiciosReparaciones(event) { this.irListaSitios(event, Constantes.ID_CATEGORIA_SERVICIOS_REPARACIONES); }
 
   irEventos(event) {
     this.navCtrl.push(ListadoEventosPage);

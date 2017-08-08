@@ -241,7 +241,7 @@ export class EjemploEventosDao {
 
     var resul = new Promise((resolve, reject) => {
       this.leerFicheros(rutasFichero, this.leerSitiosEventoArr).then(
-        imagenes => resolve(imagenes)
+        sitios => resolve(sitios)
       ).catch(err => reject(err));
     });
     return resul;
@@ -279,8 +279,8 @@ export class EjemploEventosDao {
     resul.descripcion = Base64.decode(sitio.descripcion);
     resul.nombreIcono = Base64.decode(sitio.nombre_icono);
     resul.logotipo = this.crearImagenSitio(resul.idSitioRegistrado, resul.nombreIcono, true, sitio.icono);
-    resul.longitud = sitio.longitud;
-    resul.latitud = sitio.latitud;
+    resul.longitud = parseFloat(sitio.longitud);
+    resul.latitud = parseFloat(sitio.latitud);
     resul.activo = UtilTipos.toBoolean(sitio.activo);
     if (sitio.ultima_actualizacion != null) {
       resul.ultimaActualizacion = new Date(UtilFecha.toISO(sitio.ultima_actualizacion));

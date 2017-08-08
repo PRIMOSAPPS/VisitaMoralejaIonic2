@@ -25,6 +25,7 @@ import { ListadoGrupoPage } from '../pages/listadogrupo/listadogrupo';
 import { DetalleActividadPage } from '../pages/detalleactividad/detalleactividad';
 
 import { MapaPage } from '../pages/mapa/mapa';
+import { ListadoActividadesMapaEventoPage } from '../pages/mapa/listadoactividadesmapaevento';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { MapaPage } from '../pages/mapa/mapa';
     ListadoSitiosEventoPage,
     DetalleSitioEventoPage,
     ListadoGrupoPage,
-    DetalleActividadPage
+    DetalleActividadPage,
+    ListadoActividadesMapaEventoPage
   ],
   imports: [
     BrowserModule,
@@ -65,7 +67,8 @@ import { MapaPage } from '../pages/mapa/mapa';
     ListadoSitiosEventoPage,
     DetalleSitioEventoPage,
     ListadoGrupoPage,
-    DetalleActividadPage
+    DetalleActividadPage,
+    ListadoActividadesMapaEventoPage
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
   providers: [
