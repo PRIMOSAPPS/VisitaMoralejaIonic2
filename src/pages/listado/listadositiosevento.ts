@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { ListadoPage } from './listado';
-import {DetalleSitioPage} from '../detallesitio/detallesitio';
+import {DetalleSitioEventoPage} from '../detallesitioevento/detallesitioevento';
 
 import { EjemploEventosDao } from '../../providers/dao/ejemplodao/ejemploeventosdao';
 
@@ -28,7 +28,7 @@ export class ListadoSitiosEventoPage extends ListadoPage {
     }
 
     itemSeleccionado(event, sitio) {
-      this.navCtrl.setRoot(DetalleSitioPage, {
+      this.navCtrl.setRoot(DetalleSitioEventoPage, {
         sitio: sitio
       });
     }
